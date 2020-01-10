@@ -1,0 +1,9 @@
+Package: com.mac-user669.zenithdark
+Name: ZenithDark
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: mac-user669
+Author: mac-user669
+Section: Tweaks
