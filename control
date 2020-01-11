@@ -1,8 +1,8 @@
 Package: com.mac-user669.zenithdark
-Version: 0.0.2
+Version: 0.0.3
 Architecture: iphoneos-arm
 Maintainer: mac-user669
-Depends: mobilesubstrate, com.muirey03.zenith
+Depends: mobilesubstrate, com.muirey03.zenith, firmware (>=13.0)
 Section: Tweaks
 Description: Changes Zeniths tabs to a dark blur
 Author: mac-user669

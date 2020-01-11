@@ -8,5 +8,6 @@ TWEAK_NAME = ZenithDark
 
 ZenithDark_FILES = Tweak.x
 ZenithDark_CFLAGS = -fobjc-arc
+ZenithDark_FRAMEWORKS = UIKit CoreGraphics
 
 include $(THEOS_MAKE_PATH)/tweak.mk
