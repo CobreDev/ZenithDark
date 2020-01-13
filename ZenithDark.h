@@ -23,4 +23,4 @@ ZenithDark Header file to keep the tweak.x file clean!
 #define kDarkModeColor [UIColor colorWithWhite:0.0 alpha:0.44]
 
 // Stock Zenith color we are using macros so we can call it later if need be.
-#define kLightModeColor [UIColor colorWithWhite:1.0 alpha:1.0]
+#define kLightModeColor [UIColor colorWithWhite:1.0 alpha:0.7]
