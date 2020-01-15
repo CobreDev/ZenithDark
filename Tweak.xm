@@ -11,9 +11,28 @@ Written for Cooper Hull, @(mac-user669).
 
 #import "ZenithDark.h"
 
+static BOOL enabled;
+static BOOL replaceOriginalView;
+static BOOL notificationBadgesEnabled;
+static void loadPrefs() {
+  static NSMutableDictionary *settings;
+
+  CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+  if (keyList) {
+    settings = (NSMutableDictionary *)CFBridgingRelease(CFPreferencesCopyMultiple(keyList, CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost));
+    CFRelease(keyList);
+  } else {
+    settings = [NSMutableDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdarkprefs.plist"];
+  }
+
+    enabled = [([settings objectForKey:@"enabled"] ? [settings objectForKey:@"enabled"] : @(YES)) boolValue];
+  replaceOriginalView = [([settings objectForKey:@"replaceoriginalview"] ? [settings objectForKey:@"replaceoriginalview"] : @(YES)) boolValue];
+  notificationBadgesEnabled = [([settings objectForKey:@"notificationBadgesEnabled"] ? [settings objectForKey:@"notificationBadgesEnabled"] : NO) boolValue];
+}
+
+
 // We then hook the class in this case Zenith's grabber view is called “ZNGrabberAccessoryView” 
 %hook ZNGrabberAccessoryView
-
 // this is called when iOS 13's dark mode is enabled!
 -(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
   %orig(previousTraitCollection);
@@ -48,6 +67,8 @@ Written for Cooper Hull, @(mac-user669).
 
 // our constructor
 %ctor {
+
+loadPrefs();
 
 // We use this to make sure we load Zenith's dynamic library at runtime so we can modify it with our tweak.
 dlopen ("/Library/MobileSubstrate/DynamicLibraries/Zenith.dylib", RTLD_NOW);
