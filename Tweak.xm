@@ -12,8 +12,6 @@ Written for Cooper Hull, @(mac-user669).
 #import "ZenithDark.h"
 
 static BOOL enabled;
-static BOOL replaceOriginalView;
-static BOOL notificationBadgesEnabled;
 static void loadPrefs() {
   static NSMutableDictionary *settings;
 
@@ -26,15 +24,13 @@ static void loadPrefs() {
   }
 
     enabled = [([settings objectForKey:@"enabled"] ? [settings objectForKey:@"enabled"] : @(YES)) boolValue];
-  replaceOriginalView = [([settings objectForKey:@"replaceoriginalview"] ? [settings objectForKey:@"replaceoriginalview"] : @(YES)) boolValue];
-  notificationBadgesEnabled = [([settings objectForKey:@"notificationBadgesEnabled"] ? [settings objectForKey:@"notificationBadgesEnabled"] : NO) boolValue];
 }
-
 
 // We then hook the class in this case Zenith's grabber view is called “ZNGrabberAccessoryView” 
 %hook ZNGrabberAccessoryView
-// this is called when iOS 13's dark mode is enabled!
+  // this is called when iOS 13's dark mode is enabled!
 -(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  if (enabled) {
   %orig(previousTraitCollection);
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -43,13 +39,16 @@ static void loadPrefs() {
 
     else {
      [self setBackgroundColor:kLightModeColor];
+      }
     }
   }
+  %orig;
 }
 
 // the method we  modify is this method that is called from UIImageView to set the backgroundColor of the image view. 
 // Since the grabber view is of type UIImageView we can modify this method :)
 -(void)setBackgroundColor:(UIColor *)backgroundColor {
+    if (enabled) {
   // by default have our tweak overide this.
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -58,12 +57,16 @@ static void loadPrefs() {
 
     else {
     %orig;
+      }
     }
   }
+  %orig;
 }
+
 
 // we need to make sure we tell theos that we are finished hooking this class not doing so with cause the end of the world :P
 %end
+
 
 // our constructor
 %ctor {

@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 ARCHS = arm64 arm64e
-export TARGET = iphone:clang:11.2:latest
+export TARGET = iphone:clang:13.0:latest
 BUNDLE_NAME = ZenithDarkPrefs
 
 ZenithDarkPrefs_FILES = ZnthDrkRootListController.m
