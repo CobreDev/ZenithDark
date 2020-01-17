@@ -12,6 +12,24 @@
 
 #import "ZenithDark.h"
 
+static BOOL enabled;
+
+
+static void refreshPrefs() {
+  CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+  if (keyList) {
+    settings = (NSMutableDictionary *)CFBridgingRelease(CFPreferencesCopyMultiple(keyList, CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost));
+    CFRelease(keyList);
+  } else {
+    settings = nil;
+  }
+  if (!settings) {
+    settings = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdarkprefs.plist"];
+  }
+
+  enabled = [([settings objectForKey:@"enabled"] ?: @(YES)) boolValue];
+}
+
 
 
 
@@ -38,10 +56,11 @@
 @class ZNGrabberAccessoryView; 
 static void (*_logos_orig$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$)(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST, SEL, UITraitCollection *); static void _logos_method$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST, SEL, UITraitCollection *); static void (*_logos_orig$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$)(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST, SEL, UIColor *); static void _logos_method$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST, SEL, UIColor *); 
 
-#line 16 "Tweak.xm"
+#line 34 "Tweak.xm"
 
   
 static void _logos_method$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, UITraitCollection * previousTraitCollection) {
+  if(enabled){
   _logos_orig$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$(self, _cmd, previousTraitCollection);
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -52,11 +71,18 @@ static void _logos_method$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidCh
      [self setBackgroundColor:kLightModeColor];
       }
     }
+  }
+    else {
+    _logos_orig$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$(self, _cmd, previousTraitCollection);
+      }
+
 }
 
 
 
 static void _logos_method$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(_LOGOS_SELF_TYPE_NORMAL ZNGrabberAccessoryView* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, UIColor * backgroundColor) {
+    if(enabled){
+
   
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -67,6 +93,10 @@ static void _logos_method$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(
     _logos_orig$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(self, _cmd, backgroundColor);
       }
     }
+  }
+    else {
+    _logos_orig$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(self, _cmd, backgroundColor);
+}
 }
 
 
@@ -74,8 +104,7 @@ static void _logos_method$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$(
 
 
 
-
-static __attribute__((constructor)) void _logosLocalCtor_da6b7450(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_16c0be02(int __unused argc, char __unused **argv, char __unused **envp) {
 
 
 
@@ -84,4 +113,4 @@ dlopen ("/Library/MobileSubstrate/DynamicLibraries/Zenith.dylib", RTLD_NOW);
 }
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$ZNGrabberAccessoryView = objc_getClass("ZNGrabberAccessoryView"); MSHookMessageEx(_logos_class$_ungrouped$ZNGrabberAccessoryView, @selector(traitCollectionDidChange:), (IMP)&_logos_method$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$, (IMP*)&_logos_orig$_ungrouped$ZNGrabberAccessoryView$traitCollectionDidChange$);MSHookMessageEx(_logos_class$_ungrouped$ZNGrabberAccessoryView, @selector(setBackgroundColor:), (IMP)&_logos_method$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$, (IMP*)&_logos_orig$_ungrouped$ZNGrabberAccessoryView$setBackgroundColor$);} }
-#line 59 "Tweak.xm"
+#line 88 "Tweak.xm"

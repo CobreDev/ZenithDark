@@ -1,7 +1,6 @@
 ARCHS = arm64 arm64e
 SDK = iPhoneOS13.0
 FINALPACKAGE = 1
-export TARGET = iphone:clang:13.0:latest
 
 include $(THEOS)/makefiles/common.mk
 
@@ -15,5 +14,3 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	install.exec "sbreload"
-SUBPROJECTS += zenithdarkprefs
-include $(THEOS_MAKE_PATH)/aggregate.mk
