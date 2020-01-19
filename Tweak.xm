@@ -11,27 +11,14 @@ Written for Cooper Hull, @(mac-user669).
 
 #import "ZenithDark.h"
 
-static BOOL enabled;
-static void loadPrefs() {
-  static NSMutableDictionary *settings;
-
-  CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-  if (keyList) {
-    settings = (NSMutableDictionary *)CFBridgingRelease(CFPreferencesCopyMultiple(keyList, CFSTR("com.mac-user669.zenithdarkprefs"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost));
-    CFRelease(keyList);
-  } else {
-    settings = [NSMutableDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdarkprefs.plist"];
-  }
-
-    enabled = [([settings objectForKey:@"enabled"] ? [settings objectForKey:@"enabled"] : @(YES)) boolValue];
-}
-
 // We then hook the class in this case Zenith's grabber view is called “ZNGrabberAccessoryView” 
 %hook ZNGrabberAccessoryView
-  // this is called when iOS 13's dark mode is enabled!
+
+// this is called when iOS 13's dark mode is enabled!
 -(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-  if (enabled) {
-  %orig(previousTraitCollection);
+   %orig(previousTraitCollection);
+  if (kEnabled) { 
+  // if the tweak is enabled and the version is iOS 13 or later run our code
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
        [self setBackgroundColor:kDarkModeColor];
@@ -39,41 +26,73 @@ static void loadPrefs() {
 
     else {
      [self setBackgroundColor:kLightModeColor];
-      }
     }
   }
-  %orig;
 }
+
+else {
+  %orig(previousTraitCollection);
+}
+
+}
+
+
 
 // the method we  modify is this method that is called from UIImageView to set the backgroundColor of the image view. 
 // Since the grabber view is of type UIImageView we can modify this method :)
 -(void)setBackgroundColor:(UIColor *)backgroundColor {
-    if (enabled) {
+  %orig;
+  if (kEnabled) {
   // by default have our tweak overide this.
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
        %orig(kDarkModeColor);
     }
+  }
 
     else {
     %orig;
-      }
     }
   }
-  %orig;
 }
-
 
 // we need to make sure we tell theos that we are finished hooking this class not doing so with cause the end of the world :P
 %end
 
 
+
+// Load preferences to make sure changes are written to the plist
+static void loadPrefs() {
+
+  // Thanks to skittyblock!
+  CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+  if(keyList) {
+    prefs = (NSMutableDictionary *)CFPreferencesCopyMultiple(keyList, CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+    CFRelease(keyList);
+  } else {
+    prefs = nil;
+  }
+
+  if (!prefs) {
+   prefs = [NSMutableDictionary dictionaryWithContentsOfFile:PLIST_PATH];
+
+  }
+    //our preference values that write to a plist file when a user selects somethings
+  kEnabled = [([prefs objectForKey:@"kEnabled"] ?: @(YES)) boolValue];
+}
+
+
+// thanks to skittyblock!
+static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+  loadPrefs();
+}
+
 // our constructor
 %ctor {
-
-loadPrefs();
-
-// We use this to make sure we load Zenith's dynamic library at runtime so we can modify it with our tweak.
+  // load our prefs
+ loadPrefs(); 
+ CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) PreferencesChangedCallback, CFSTR("com.mac-user669.zenithdark.prefschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+  // We use this to make sure we load Zenith's dynamic library at runtime so we can modify it with our tweak.
 dlopen ("/Library/MobileSubstrate/DynamicLibraries/Zenith.dylib", RTLD_NOW);
 
 }

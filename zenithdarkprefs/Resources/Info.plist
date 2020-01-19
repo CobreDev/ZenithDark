@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>ZnthDrkRootListController</string>
+	<string>ZNDarkPrefsRootListController</string>
 </dict>
 </plist>

@@ -1,14 +1,14 @@
+ARCHS = arm64 arm64e
+SDK = iPhoneOS12.4
+FINALPACKAGE = 1
+
 include $(THEOS)/makefiles/common.mk
 
-ARCHS = arm64 arm64e
-export TARGET = iphone:clang:13.0:latest
 BUNDLE_NAME = ZenithDarkPrefs
-
-ZenithDarkPrefs_FILES = ZnthDrkRootListController.m
+ZenithDarkPrefs_FILES = ZNDarkPrefsRootListController.m
 ZenithDarkPrefs_INSTALL_PATH = /Library/PreferenceBundles
 ZenithDarkPrefs_FRAMEWORKS = UIKit
 ZenithDarkPrefs_PRIVATE_FRAMEWORKS = Preferences
-ZenithDarkPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
