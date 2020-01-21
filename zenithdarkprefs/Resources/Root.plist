@@ -30,9 +30,25 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Apply Changes</string>
+			<key>footerText</key>
+			<string>A Respring is needed to apply changes!</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>action</key>
+			<string>doAFancyRespring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string>Credits</string>
 			<key>footerText</key>
-			<string>Conceptualized by your yours truly.</string>
+			<string>Conceptualized by yours truly.</string>
 		</dict>
 		<dict>
 			<key>icon</key>
@@ -40,7 +56,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>mac-user669 (@mac-user669)</string>
+			<string>@mac_user669</string>
 			<key>action</key>
 			<string>followMe</string>
 		</dict>
@@ -56,7 +72,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>J.K. Hayslip (@iKilledAppl3) </string>
+			<string>@iKilledAppl3</string>
 			<key>action</key>
 			<string>followiKA</string>
 		</dict>
@@ -72,25 +88,9 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Skitty (@skittyblock) </string>
+			<string>@Skittyblock</string>
 			<key>action</key>
 			<string>followSkitty</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Apply Changes</string>
-			<key>footerText</key>
-			<string>A Respring is needed to apply changes!</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Respring</string>
-			<key>action</key>
-			<string>doAFancyRespring</string>
 		</dict>
 	</array>
 	<key>title</key>

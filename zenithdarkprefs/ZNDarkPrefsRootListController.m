@@ -95,7 +95,7 @@
     [confirmRespringAlert addAction:cancel];	
 	[confirmRespringAlert addAction:confirm];	
 
-	[self presentViewController:confirmRespringAlert animated:YES completion:nil];	
+	[self presentViewController:confirmRespringAlert animated:YES completion:nil]; 
 }
 
 @end
