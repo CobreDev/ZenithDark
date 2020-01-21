@@ -26,10 +26,10 @@ BOOL kEnabled;
 NSMutableDictionary *prefs;
 
 // Dark Zenith color we are using macros so we can call it later if need be.
-#define kDarkModeColor [UIColor colorWithWhite:0.0 alpha:0.44]
+#define kDarkModeColor [UIColor colorWithRed:0.11 green:0.11 blue:0.11 alpha:0.73];
 
 // Stock Zenith color we are using macros so we can call it later if need be.
-#define kLightModeColor [UIColor colorWithWhite:1.0 alpha:0.7]
+#define kLightModeColor [UIColor colorWithWhite:1.0 alpha:0.8]
 
 // the PLIST path where all user settings are stored.
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist"
