@@ -1,14 +1,44 @@
 #import "ZNDarkPrefsRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
+
+#define THEME_COLOR                                                   \
+  [UIColor colorWithRed:0.82                                          \
+                  green:0.64                                          \
+                   blue:0.00                                          \
+                  alpha:1.0];
 
 @implementation ZNDarkPrefsRootListController
+
++ (UIColor *)hb_tintColor {
+  return THEME_COLOR;
+}
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
 	// share button for our tweak :P
 	 self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(shareTapped)];
+}
 
 
+- (void)viewDidLoad {
+  [super viewDidLoad];
+
+  if (@available(iOS 11, *)) {
+    self.navigationController.navigationBar.prefersLargeTitles = false;
+    self.navigationController.navigationItem.largeTitleDisplayMode =
+        UINavigationItemLargeTitleDisplayModeNever;
+  }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  if (@available(iOS 11, *)) {
+    self.navigationController.navigationBar.prefersLargeTitles = false;
+    self.navigationController.navigationItem.largeTitleDisplayMode =
+        UINavigationItemLargeTitleDisplayModeNever;
+  }
 }
 
 
@@ -45,23 +75,6 @@
 	return _specifiers;
 }
 
-
--(void)followMe {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/mac_user669"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
--(void)followiKA {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/iKilledAppl3"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
--(void)followSkitty {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/SkittyBlock"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
-
 -(void)respring {
     NSTask *task = [[[NSTask alloc] init] autorelease];
     [task setLaunchPath:@"/usr/bin/killall"];
@@ -75,18 +88,7 @@
 	UIAlertController *confirmRespringAlert = [UIAlertController alertControllerWithTitle:@"Apply Settings?" message:@"This will respring your device." preferredStyle:UIAlertControllerStyleActionSheet];	
 	UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {	
 
-	// blur then respring our device!	
-	self.mainAppRootWindow = [UIApplication sharedApplication].keyWindow;
-    self.respringBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    self.respringEffectView = [[UIVisualEffectView alloc] initWithEffect:self.respringBlur];
-    self.respringEffectView.frame = [[UIScreen mainScreen] bounds];
-    [self.mainAppRootWindow addSubview:self.respringEffectView];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:5.0];
-    [self.respringEffectView setAlpha:0];
-    [UIView commitAnimations];
-
-    [self performSelector:@selector(respring) withObject:nil afterDelay:3.0];
+    [self performSelector:@selector(respring) withObject:nil afterDelay:0.0];
 
     }];	
 

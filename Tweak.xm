@@ -1,4 +1,5 @@
 #import "ZenithDark.h"
+#import <Cephei/HBPreferences.h>
 
 /*
 

@@ -4,6 +4,25 @@
 <dict>
 	<key>items</key>
 	<array>
+
+		<dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+            <key>headerCellClass</key>
+            <string>HBPackageNameHeaderCell</string>
+            <key>packageIdentifier</key>
+            <string>com.mac-user669.zenithdark</string>
+            <key>backgroundGradientColors</key>
+            <array>
+                <string>#D0A400</string>
+                <string>#D0A400</string>
+            </array>
+			<key>titleColor</key>
+			<string>#111111</string>
+			<key>subtitleColor</key>
+			<string>#444444</string>
+        </dict>
+
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -39,6 +58,8 @@
 			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Respring</string>
+			<key>cellClass</key>
+    		<string>HBTintedTableCell</string>
 			<key>action</key>
 			<string>doAFancyRespring</string>
 		</dict>
@@ -51,15 +72,21 @@
 			<string>Conceptualized by yours truly.</string>
 		</dict>
 		<dict>
-			<key>icon</key>
-			<string>mac-user669.png</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>@mac_user669</string>
-			<key>action</key>
-			<string>followMe</string>
-		</dict>
+            <key>cellClass</key>
+            <string>HBTwitterCell</string>
+            <key>label</key>
+            <string>mac-user669</string>
+            <key>user</key>
+            <string>mac_user669</string>
+        </dict>
+		<dict>
+            <key>cellClass</key>
+            <string>HBLinkTableCell</string>
+            <key>label</key>
+            <string>Donate</string>
+            <key>url</key>
+    		<string>https://paypal.me/macuser669</string>
+        </dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -67,15 +94,21 @@
 			<string>Coded most of the tweak.</string>
 		</dict>
 		<dict>
-			<key>icon</key>
-			<string>iKA.png</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>@iKilledAppl3</string>
-			<key>action</key>
-			<string>followiKA</string>
-		</dict>
+            <key>cellClass</key>
+            <string>HBTwitterCell</string>
+            <key>label</key>
+            <string>iKilledAppl3</string>
+            <key>user</key>
+            <string>iKilledAppl3</string>
+        </dict>
+		<dict>
+            <key>cellClass</key>
+            <string>HBLinkTableCell</string>
+            <key>label</key>
+            <string>Donate</string>
+            <key>url</key>
+    		<string>https://paypal.me/iKilledAppl3</string>
+        </dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
@@ -83,15 +116,13 @@
 			<string>Helped with some of our preferences code and amongst other things.</string>
 		</dict>
 		<dict>
-			<key>icon</key>
-			<string>skitty.png</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>@Skittyblock</string>
-			<key>action</key>
-			<string>followSkitty</string>
-		</dict>
+            <key>cellClass</key>
+            <string>HBTwitterCell</string>
+            <key>label</key>
+            <string>Skittyblock</string>
+            <key>user</key>
+            <string>Skittyblock</string>
+        </dict>
 	</array>
 	<key>title</key>
 	<string>ZenithDark</string>
