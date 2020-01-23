@@ -1,15 +1,11 @@
 #import <Preferences/PSListController.h>
-#import <CepheiPrefs/HBRootListController.h>
-
 @import UIKit;
 
 // image for share button
 
 #define kImagePath @"/Library/Application Support/ZenithDark/ZNDark.png"
 
-// @interface ZNDarkPrefsRootListController : PSListController
-
-@interface ZNDarkPrefsRootListController : HBRootListController
+@interface ZNDarkPrefsRootListController : PSListController
 @property (nonatomic, strong) UIBlurEffect *respringBlur;
 @property (nonatomic, strong) UIVisualEffectView *respringEffectView;
 @property (nonatomic, strong) UIWindow *mainAppRootWindow;
@@ -37,4 +33,3 @@
 - (bool)suspend;
 - (void)terminate;
 @end
-

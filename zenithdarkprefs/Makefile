@@ -11,7 +11,6 @@ ZenithDarkPrefs_FILES = ZNDarkPrefsRootListController.m
 ZenithDarkPrefs_INSTALL_PATH = /Library/PreferenceBundles
 ZenithDarkPrefs_FRAMEWORKS = UIKit
 ZenithDarkPrefs_PRIVATE_FRAMEWORKS = Preferences
-ZenithDarkPrefs_EXTRA_FRAMEWORKS += Cephei CepheiPrefs
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

@@ -6,9 +6,8 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = ZenithDark
 
-$(TWEAK_NAME)_FILES = Tweak.xm
-$(TWEAK_NAME)_FRAMEWORKS = UIKit CoreGraphics
-$(TWEAK_NAME)_EXTRA_FRAMEWORKS += Cephei CepheiPrefs
+ZenithDark_FILES = Tweak.xm
+ZenithDark_FRAMEWORKS = UIKit CoreGraphics
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
