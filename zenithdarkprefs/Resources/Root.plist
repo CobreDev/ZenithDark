@@ -21,6 +21,16 @@
  			<key>subtitleColor</key>
  			<string>#444444</string>
         </dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+			<key>footerText</key>
+			<string></string>
+		</dict>
+
 		<dict>
 			<key>PostNotification</key>
 			<string>com.mac-user669.zenithdark.prefschanged</string>
