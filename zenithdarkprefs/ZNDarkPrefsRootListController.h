@@ -15,7 +15,6 @@
 @property (nonatomic, strong) UIWindow *mainAppRootWindow;
 @end
 
-
 // we use this to respring our device!
 @interface NSTask : NSObject
 @property (copy) NSArray *arguments;

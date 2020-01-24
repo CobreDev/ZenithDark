@@ -56,30 +56,6 @@
 }
 
 
--(void)followMe {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/mac_user669"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
--(void)followiKA {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/iKilledAppl3"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
--(void)followSkitty {	
-	NSURL *twitter = [NSURL URLWithString:@"https://twitter.com/SkittyBlock"];	
-	[[UIApplication sharedApplication] openURL:twitter options:@{} completionHandler:nil];	
-}
-
-
--(void)respring {
-    NSTask *task = [[[NSTask alloc] init] autorelease];
-    [task setLaunchPath:@"/usr/bin/killall"];
-    [task setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
-    [task launch];	  
-    
-}
-
 -(void)doAFancyRespring {
 
 	UIAlertController *confirmRespringAlert = [UIAlertController alertControllerWithTitle:@"Apply Settings?" message:@"This will respring your device." preferredStyle:UIAlertControllerStyleActionSheet];	
