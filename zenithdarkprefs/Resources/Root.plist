@@ -11,15 +11,10 @@
              <string>HBPackageNameHeaderCell</string>
              <key>packageIdentifier</key>
              <string>com.mac-user669.zenithdark</string>
-             <key>backgroundGradientColors</key>
-             <array>
-                 <string>#D0A400</string>
-                 <string>#D0A400</string>
-             </array>
  			<key>titleColor</key>
- 			<string>#111111</string>
+ 			<string>#D0A400</string>
  			<key>subtitleColor</key>
- 			<string>#444444</string>
+ 			<string>#D0A400</string>
         </dict>
 
 		<dict>
@@ -60,46 +55,21 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Credits</string>
+			<string></string>
 			<key>footerText</key>
-			<string>Conceptualized by yours truly.</string>
+			<string></string>
 		</dict>
-		<dict>
-            <key>cellClass</key>
-             <string>HBTwitterCell</string>
-             <key>label</key>
-             <string>mac-user669</string>
-             <key>user</key>
-             <string>mac_user669</string>
-        </dict>
+
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Coded most of the tweak.</string>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>ZNDarkPrefsAboutListController</string>
+			<key>isController</key>
+			<true/>
+			<key>label</key>
+			<string>About</string>
 		</dict>
-		<dict>
-            <key>cellClass</key>
-             <string>HBTwitterCell</string>
-             <key>label</key>
-             <string>iKilledAppl3</string>
-             <key>user</key>
-             <string>iKilledAppl3</string>
-        </dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Helped with some of our preferences code and amongst other things.</string>
-		</dict>
-		<dict>
-            <key>cellClass</key>
-             <string>HBTwitterCell</string>
-             <key>label</key>
-             <string>Skittyblock</string>
-             <key>user</key>
-             <string>Skittyblock</string>
-        </dict>
 	</array>
 	<key>title</key>
 	<string>ZenithDark</string>

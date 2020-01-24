@@ -7,7 +7,7 @@ TARGET = iphone:12.2:13.0
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = ZenithDarkPrefs
-ZenithDarkPrefs_FILES = ZNDarkPrefsRootListController.m
+ZenithDarkPrefs_FILES = ZNDarkPrefsRootListController.m ZNDarkPrefsAboutListController.m
 ZenithDarkPrefs_INSTALL_PATH = /Library/PreferenceBundles
 ZenithDarkPrefs_FRAMEWORKS = UIKit
 ZenithDarkPrefs_PRIVATE_FRAMEWORKS = Preferences
