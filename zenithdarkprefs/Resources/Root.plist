@@ -35,14 +35,7 @@
 			<key>label</key>
 			<string>Enable</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Apply Changes</string>
-			<key>footerText</key>
-			<string>A Respring is needed to apply changes!</string>
-		</dict>
+
 		<dict>
 			<key>cell</key>
 			<string>PSButtonCell</string>
