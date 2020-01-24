@@ -2,8 +2,8 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 
 #define THEME_COLOR                                                    \
-   [UIColor colorWithRed:1.00                                          \
-                   green:0.00                                          \
+   [UIColor colorWithRed:0.82                                          \
+                   green:0.64                                          \
                     blue:0.00                                          \
                    alpha:1.0];
 
