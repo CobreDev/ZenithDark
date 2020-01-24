@@ -48,6 +48,8 @@
 			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Respring</string>
+			<key>cellClass</key>
+     		<string>HBTintedTableCell</string>
 			<key>action</key>
 			<string>doAFancyRespring</string>
 		</dict>
