@@ -1,14 +1,24 @@
 #import "ZNDarkPrefsRootListController.h"
+#import <CepheiPrefs/HBAppearanceSettings.h>
+
+#define THEME_COLOR                                                    \
+   [UIColor colorWithRed:1.00                                          \
+                   green:0.00                                          \
+                    blue:0.00                                          \
+                   alpha:1.0];
+
 
 @implementation ZNDarkPrefsRootListController
+
++ (UIColor *)hb_tintColor {
+   return THEME_COLOR;
+ }
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
 	// share button for our tweak :P
 	 self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(shareTapped)];
-
-
 }
 
 
