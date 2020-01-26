@@ -1,5 +1,7 @@
 #import "ZNDarkPrefsRootListController.h"
 #import <CepheiPrefs/HBAppearanceSettings.h>
+#import <Cephei/HBRespringController.h>
+#import <Cephei/HBPreferences.h>
 
 #define THEME_COLOR                                                    \
    [UIColor colorWithRed:0.82                                          \
@@ -44,6 +46,7 @@
 }
 // End of "Hide Large Title"
 
+
 //share button action 
 - (void)shareTapped {
    
@@ -77,40 +80,27 @@
 	return _specifiers;
 }
 
--(void)respring {
-    NSTask *task = [[[NSTask alloc] init] autorelease];
-    [task setLaunchPath:@"/usr/bin/killall"];
-    [task setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
-    [task launch];    
-    
+- (void)respring {
+  [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil]; // Dismisses keyboard
+  [HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=ZenithDark"]];
 }
 
--(void)doAFancyRespring {
+-(void)respringPopUp {
 
-	UIAlertController *confirmRespringAlert = [UIAlertController alertControllerWithTitle:@"Apply Settings?" message:@"This will respring your device." preferredStyle:UIAlertControllerStyleActionSheet];	
-	UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {	
+  UIAlertController *confirmRespringAlert = [UIAlertController alertControllerWithTitle:@"Apply Settings?" message:@"This will respring your device." preferredStyle:UIAlertControllerStyleActionSheet];  
+  UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {  
 
-	// blur then respring our device!	
-	self.mainAppRootWindow = [UIApplication sharedApplication].keyWindow;
-    self.respringBlur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    self.respringEffectView = [[UIVisualEffectView alloc] initWithEffect:self.respringBlur];
-    self.respringEffectView.frame = [[UIScreen mainScreen] bounds];
-    [self.mainAppRootWindow addSubview:self.respringEffectView];
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:5.0];
-    [self.respringEffectView setAlpha:0];
-    [UIView commitAnimations];
+    [self performSelector:@selector(respring) withObject:nil afterDelay:0.0];
 
-    [self performSelector:@selector(respring) withObject:nil afterDelay:3.0];
+    }]; 
 
-    }];	
+  UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]; 
 
-	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];	
+    [confirmRespringAlert addAction:cancel];  
+    [confirmRespringAlert addAction:confirm]; 
 
-    [confirmRespringAlert addAction:cancel];	
-	[confirmRespringAlert addAction:confirm];	
 
-	[self presentViewController:confirmRespringAlert animated:YES completion:nil]; 
+  [self presentViewController:confirmRespringAlert animated:YES completion:nil]; 
 }
 
 @end
