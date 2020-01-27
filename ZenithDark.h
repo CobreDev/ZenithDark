@@ -19,6 +19,14 @@ ZenithDark Header file to keep the tweak.x file clean!
 @interface ZNGrabberAccessoryView : UIImageView
 @end
 
+typedef NS_ENUM(NSUInteger, ZNDarkSortType) {
+  ZNDarkSortTypeAdaptive,
+  ZNDarkSortTypeDark,
+  ZNDarkSortTypeOLEDAdaptive,
+  ZNDarkSortTypeOLED
+};
+
+static ZNDarkSortType sortType = ZNDarkSortTypeAdaptive;
 // a boolean value to store to the tweak's property list path to see if the user has enabled or disabled the tweak.
 BOOL kEnabled;
 
@@ -26,10 +34,11 @@ BOOL kEnabled;
 NSMutableDictionary *prefs;
 
 // Dark Zenith color we are using macros so we can call it later if need be.
-#define kDarkModeColor [UIColor colorWithWhite:0.0 alpha:0.44]
+#define kDarkColor [UIColor colorWithWhite:0.0 alpha:0.44]
 
 // Stock Zenith color we are using macros so we can call it later if need be.
-#define kLightModeColor [UIColor colorWithWhite:1.0 alpha:0.7]
+#define kLightColor [UIColor colorWithWhite:1.0 alpha:0.7]
 
+#define kOLEDColor [UIColor colorWithWhite:0.0 alpha:0.75]
 // the PLIST path where all user settings are stored.
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist"

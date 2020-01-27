@@ -40,6 +40,45 @@
 			<key>label</key>
 			<string>Enable</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Color Type</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>com.mac-user669.zenithdark</string>
+			<key>key</key>
+			<string>sortingType</string>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>Adaptive</string>
+				<string>Dark</string>
+				<string>OLED Adaptive</string>
+				<string>OLED</string>
+			</array>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+			<key>footerText</key>
+			<string>A respring is needed to apply changes</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>
