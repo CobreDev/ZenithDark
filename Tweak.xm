@@ -46,7 +46,7 @@ else {
         colourString = [preferencesDictionary objectForKey: @"kCustomDarkColor"];
     }
 
-    UIColor* darkColor = [SparkColourPickerUtils colourWithString: colourString withFallback: @"#FF00FF"];
+    UIColor* darkColor = [SparkColourPickerUtils colourWithString: colourString withFallback: @"#000000:0.44"];
 
   // by default have our tweak overide this.
     if (@available(iOS 13, *)) {

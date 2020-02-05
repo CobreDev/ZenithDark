@@ -2,6 +2,7 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <Cephei/HBRespringController.h>
 #import <Cephei/HBPreferences.h>
+#import "SparkColourPickerUtils.h"
 
 #define THEME_COLOR                                                    \
    [UIColor colorWithRed:0.82                                          \
@@ -23,6 +24,16 @@
 	 self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(shareTapped)];
 }
 
+- (void)resetSettings {
+	CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+	if (keyList) {
+		CFPreferencesSetMultiple(nil, keyList, CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+		CFRelease(keyList);
+	}
+	[[NSFileManager defaultManager] removeItemAtPath:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist" error:nil];
+
+	[self respring];
+}
 
 // Hide Large Title
 - (void)viewDidLoad {
