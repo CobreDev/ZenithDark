@@ -9,6 +9,7 @@ TWEAK_NAME = ZenithDark
 ZenithDark_FILES = Tweak.xm
 ZenithDark_FRAMEWORKS = UIKit CoreGraphics
 ZenithDark_EXTRA_FRAMEWORKS += Cephei
+ZenithDark_LIBRARIES = sparkcolourpicker
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

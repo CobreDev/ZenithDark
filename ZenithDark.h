@@ -12,6 +12,11 @@ ZenithDark Header file to keep the tweak.x file clean!
 */
 
 
+#import <Cephei/HBPreferences.h>
+#import <CepheiPrefs/HBRootListController.h>
+#import <CepheiPrefs/HBAppearanceSettings.h>
+#import "SparkColourPickerUtils.h"
+
 // We then import UIKit so we can override the color property without this Theos doesn't have a clue what those properties are.
 @import UIKit;
 
@@ -19,14 +24,6 @@ ZenithDark Header file to keep the tweak.x file clean!
 @interface ZNGrabberAccessoryView : UIImageView
 @end
 
-typedef NS_ENUM(NSUInteger, ZNDarkSortType) {
-  ZNDarkSortTypeAdaptive,
-  ZNDarkSortTypeDark,
-  ZNDarkSortTypeOLEDAdaptive,
-  ZNDarkSortTypeOLED
-};
-
-static ZNDarkSortType sortType = ZNDarkSortTypeAdaptive;
 // a boolean value to store to the tweak's property list path to see if the user has enabled or disabled the tweak.
 BOOL kEnabled;
 
@@ -39,6 +36,6 @@ NSMutableDictionary *prefs;
 // Stock Zenith color we are using macros so we can call it later if need be.
 #define kLightColor [UIColor colorWithWhite:1.0 alpha:0.7]
 
-#define kOLEDColor [UIColor colorWithWhite:0.0 alpha:0.75]
+#define kColor1 [UIColor redColor]
 // the PLIST path where all user settings are stored.
 #define PLIST_PATH @"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist"
