@@ -49,6 +49,7 @@
 			<key>footerText</key>
 			<string>Default: #000000:0.44</string>
 		</dict>
+
 		<dict>
 			<key>cell</key>
 			<string>PSLinkCell</string>
@@ -66,9 +67,41 @@
 				<true/>
 			</dict>
 			<key>label</key>
-			<string>Color</string>
+			<string>Dark Color</string>
 			<key>key</key>
 			<string>kCustomDarkColor</string>
+			<key>PostNotification</key>
+			<string>com.mac-user669.zenithdark.prefschanged</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+			<key>footerText</key>
+			<string>Default: #FFFFFF:0.7</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>SparkColourPickerCell</string>
+			<key>libsparkcolourpicker</key>
+			<dict>
+				<key>defaults</key>
+				<string>com.mac-user669.zenithdark</string>
+				<key>key</key>
+				<string>kCustomLightColor</string>
+				<key>fallback</key>
+				<string>#FFFFFF:0.7</string>
+				<key>alpha</key>
+				<true/>
+			</dict>
+			<key>label</key>
+			<string>Light Color</string>
+			<key>key</key>
+			<string>kCustomLightColor</string>
 			<key>PostNotification</key>
 			<string>com.mac-user669.zenithdark.prefschanged</string>
 		</dict>
@@ -133,7 +166,7 @@
 				<key>title</key>
 				<string>Reset</string>
 				<key>prompt</key>
-				<string>Reset all settings?</string>
+				<string>Reset settings?</string>
 				<key>okTitle</key>
 				<string>Reset</string>
 				<key>cancelTitle</key>

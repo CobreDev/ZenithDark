@@ -4,7 +4,6 @@
 Dark Mode for Zenith's Grabber view!
 Copyright 2020 J.K. Hayslip (@iKilledAppl3) & ToxicAppl3 INSDC/iKilledAppl3 LLC.
 All code was written for learning purposes and credit must be given to the original author.
-
 Written for Cooper Hull, @mac-user669.
 */
 
@@ -16,6 +15,14 @@ Written for Cooper Hull, @mac-user669.
 -(void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
    %orig(previousTraitCollection);
   if (kEnabled) { 
+    NSString* colourString = NULL;
+    NSDictionary* preferencesDictionary = [NSDictionary dictionaryWithContentsOfFile: @"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist"];
+    if(preferencesDictionary)
+    {
+        colourString = [preferencesDictionary objectForKey: @"kCustomLightColor"];
+    }
+
+    UIColor* lightColor = [SparkColourPickerUtils colourWithString: colourString withFallback: @"#FFFFFF:0.7"];
   // if the tweak is enabled and the version is iOS 13 or later run our code
     if (@available(iOS 13, *)) {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -23,7 +30,7 @@ Written for Cooper Hull, @mac-user669.
     }
 
     else {
-     [self setBackgroundColor:kLightColor];
+     [self setBackgroundColor:lightColor];
     }
   }
 }
