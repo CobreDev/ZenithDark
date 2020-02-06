@@ -150,25 +150,6 @@
 			<key>action</key>
 			<string>respringPopUp</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string></string>
-			<key>footerText</key>
-			<string></string>
-		</dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSLinkCell</string>
-			<key>detail</key>
-			<string>ZNDarkPrefsAboutListController</string>
-			<key>isController</key>
-			<true/>
-			<key>label</key>
-			<string>About</string>
-		</dict>
 
 		<dict>
 			<key>cell</key>
@@ -176,7 +157,7 @@
 			<key>label</key>
 			<string></string>
 			<key>footerText</key>
-			<string></string>
+			<string>Reset ZenithDark's Settings</string>
 		</dict>
 		
 		<dict>
@@ -200,6 +181,26 @@
 				<string>Cancel</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+			<key>footerText</key>
+			<string></string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>ZNDarkPrefsAboutListController</string>
+			<key>isController</key>
+			<true/>
+			<key>label</key>
+			<string>About</string>
+		</dict>
+
 	</array>
 	<key>title</key>
 	<string></string>
