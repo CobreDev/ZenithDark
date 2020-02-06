@@ -2,7 +2,7 @@ Package: com.mac-user669.zenithdark
 Version: 1.5
 Architecture: iphoneos-arm
 Maintainer: mac-user669 <cooper@cooperhull.com>
-Depends: mobilesubstrate, preferenceloader, com.muirey03.zenith, ws.hbang.common (>= 1.11), firmware (>=13.0), com.spark.libsparkcolourpicker
+Depends: mobilesubstrate, preferenceloader, com.muirey03.zenith, ws.hbang.common (>= 1.11), firmware (>=13.0)
 Section: Tweaks
 Description: Changes Zeniths tabs to a dark blur
 Author: mac-user669 <cooper@cooperhull.com>

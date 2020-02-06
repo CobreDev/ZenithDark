@@ -1,8 +1,5 @@
 #import "ZNDarkPrefsRootListController.h"
-#import <CepheiPrefs/HBAppearanceSettings.h>
-#import <Cephei/HBRespringController.h>
-#import <Cephei/HBPreferences.h>
-#import "SparkColourPickerUtils.h"
+#include <CSColorPicker/CSColorPicker.h>
 
 #define THEME_COLOR                                                    \
    [UIColor colorWithRed:0.82                                          \
@@ -90,6 +87,7 @@
 
 	return _specifiers;
 }
+
 
 - (void)respring {
   [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil]; // Dismisses keyboard
