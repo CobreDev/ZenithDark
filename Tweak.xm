@@ -17,7 +17,7 @@ inline NSString *StringForPreferenceKey(NSString *key) {
     return prefs[key];
 }
 
-%group TweakGroup
+%group Tweak13
 %hook ZNGrabberAccessoryView
 
 // this is called when iOS 13's dark mode is enabled!
@@ -66,6 +66,29 @@ inline NSString *StringForPreferenceKey(NSString *key) {
 %end
 %end
 
+static BOOL ios13;
+
+%group Tweak12
+
+//We then hook the class in this case Zenith's grabber view is called “ZNGrabberAccessoryView” 
+%hook ZNGrabberAccessoryView
+// The method we then modify is this method that is called from UIImageView to set the backgroundColor of the image view. 
+// Since the grabber view is of type UIImageView we can modify this method :)
+
+-(void)setBackgroundColor:(UIColor *)backgroundColor {
+      if (kCustomDarkColorEnabled) {
+       %orig([UIColor cscp_colorFromHexString:StringForPreferenceKey(@"kDarkCustomColor")]); 
+      }
+
+      else {  
+       %orig(kDarkModeColor);
+      }
+}
+
+// We need to make sure we tell theos that we are finished hooking this class not doing so with cause the end of the world :P
+%end
+%end
+
 static void loadPrefs() {   // Load preferences to make sure changes are written to the plist
 
   // Thanks to skittyblock!
@@ -100,7 +123,14 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
  loadPrefs();   // Load our prefs
 
  if (kEnabled) {    // If enabled
-      %init(TweakGroup);   // Enable the group "TweakGroup"
+    if (@available(iOS 13, *)) {    // If the device is running iOS 13
+      ios13 = YES;    // Set "iOS13" to "YES"
+      %init(Tweak13);   // Enable the group "Tweak13"
+    } else {
+      ios13 = NO;   // Set "iOS13" to "NO"
+      %init(Tweak12);   // Enable the group "Tweak12"
+    }
+
   }
 
  CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback) PreferencesChangedCallback, CFSTR("com.mac-user669.zenithdark.prefschanged"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);

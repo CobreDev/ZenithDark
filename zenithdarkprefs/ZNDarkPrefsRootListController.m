@@ -2,10 +2,10 @@
 #include <CSColorPicker/CSColorPicker.h>
 
 #define THEME_COLOR                                                    \
-   [UIColor colorWithRed:0.82                                          \
-                   green:0.64                                          \
+   [UIColor colorWithRed:0.96                                          \
+                   green:0.74                                          \
                     blue:0.00                                          \
-                   alpha:1.0];
+                   alpha:1.00];
 
 
 @implementation ZNDarkPrefsRootListController

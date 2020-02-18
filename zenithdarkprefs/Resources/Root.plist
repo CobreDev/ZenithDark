@@ -12,9 +12,9 @@
              <key>packageIdentifier</key>
              <string>com.mac-user669.zenithdark</string>
  			<key>titleColor</key>
- 			<string>#D0A400</string>
+ 			<string>#f5bc00</string>
  			<key>subtitleColor</key>
- 			<string>#D0A400</string>
+ 			<string>#f5bc00</string>
         </dict>
 
 		<dict>
@@ -92,9 +92,8 @@
 			<key>label</key>
 			<string></string>
 			<key>footerText</key>
-			<string></string>
+			<string>Note: This won't affect anything on iOS 12</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
@@ -109,16 +108,15 @@
 			<key>PostNotification</key>
 			<string>com.mac-user669.zenithdark.prefschanged</string>
 		</dict>
-
 			<dict>
 				<key>PostNotification</key>
-			<string>com.mac-user669.zenithdark.prefschanged</string>
+				<string>com.mac-user669.zenithdark.prefschanged</string>
 				<key>cell</key>
 				<string>PSLinkCell</string>
 				<key>cellClass</key>
 				<string>CSColorDisplayCell</string>
 				<key>defaults</key>
-			<string>com.mac-user669.zenithdark</string>
+				<string>com.mac-user669.zenithdark</string>
 				<key>defaultsPath</key>
 				<string>/Library/PreferenceBundles/ZenithDark.bundle</string>
 				<key>key</key>

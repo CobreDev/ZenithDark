@@ -1,7 +1,7 @@
 ARCHS = arm64 arm64e
 SDK = iPhoneOS12.2
 FINALPACKAGE = 1
-TARGET = iphone:12.2:13.0
+TARGET = iphone:12.2:12.0
 
 
 include $(THEOS)/makefiles/common.mk
