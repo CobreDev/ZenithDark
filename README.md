@@ -1,5 +1,5 @@
 # ZenithDark
-Dark tabs for Zenith! Availible on [my repo](https://mac-user669.github.io/repo/)
+Dark tabs for Zenith!
 
 ## Installation
 [Click here to add my repo,](https://mac-user669.github.io/repo/) then install ZenithDark
