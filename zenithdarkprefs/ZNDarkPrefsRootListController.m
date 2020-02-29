@@ -1,5 +1,6 @@
 #import "ZNDarkPrefsRootListController.h"
 #include <CSColorPicker/CSColorPicker.h>
+#import "NSTask.h"
 
 #define THEME_COLOR                                                    \
    [UIColor colorWithRed:0.96                                          \
@@ -19,17 +20,6 @@
 
 	// share button for our tweak :P
 	 self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareTapped)];
-}
-
-- (void)resetSettings {
-	CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-	if (keyList) {
-		CFPreferencesSetMultiple(nil, keyList, CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-		CFRelease(keyList);
-	}
-	[[NSFileManager defaultManager] removeItemAtPath:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist" error:nil];
-
-	[self respring];
 }
 
 // Hide Large Title
@@ -53,7 +43,6 @@
   }
 }
 // End of "Hide Large Title"
-
 
 //share button action 
 - (void)shareTapped {
@@ -89,27 +78,37 @@
 }
 
 
-- (void)respring {
-  [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil]; // Dismisses keyboard
-  [HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=ZenithDark"]];
+-(void)respring {
+	UIAlertController *respring = [UIAlertController alertControllerWithTitle:@"ZenithDark"
+													 message:@"Do you want to Respring?"
+													 preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+			[self respringUtil];
+	}];
+
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+	[respring addAction:confirmAction];
+	[respring addAction:cancelAction];
+	[self presentViewController:respring animated:YES completion:nil];
+
 }
 
--(void)respringPopUp {
+-(void)respringUtil {
+	NSTask *t = [[NSTask alloc] init];
+    [t setLaunchPath:@"/usr/bin/killall"];
+    [t setArguments:[NSArray arrayWithObjects:@"backboardd", nil]];
+    [t launch];
+}
 
-  UIAlertController *confirmRespringAlert = [UIAlertController alertControllerWithTitle:@"Apply Settings?" message:@"This will respring your device." preferredStyle:UIAlertControllerStyleActionSheet];  
-  UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {  
+- (void)resetSettings {
+	CFArrayRef keyList = CFPreferencesCopyKeyList(CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+	if (keyList) {
+		CFPreferencesSetMultiple(nil, keyList, CFSTR("com.mac-user669.zenithdark"), kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+		CFRelease(keyList);
+	}
+	[[NSFileManager defaultManager] removeItemAtPath:@"/var/mobile/Library/Preferences/com.mac-user669.zenithdark.plist" error:nil];
 
-    [self performSelector:@selector(respring) withObject:nil afterDelay:0.0];
-
-    }]; 
-
-  UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]; 
-
-    [confirmRespringAlert addAction:cancel];  
-    [confirmRespringAlert addAction:confirm]; 
-
-
-  [self presentViewController:confirmRespringAlert animated:YES completion:nil]; 
+	[self respringUtil];
 }
 
 @end
