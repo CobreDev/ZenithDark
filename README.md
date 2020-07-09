@@ -1,11 +1,24 @@
 # ZenithDark
-Dark tabs for Zenith!
+#### Custom colored tabs for Zenith!
 
-## Installation
-[Click here to add my repo,](https://cydia.saurik.com/api/share#?source=https://mac-user669.github.io/repo) then install ZenithDark
+Change the tab color in Muirey03's Zenith. Make them blend in, or pop out!
 
-## Bug Reports
-Open a new issue [Here](https://github.com/mac-user669/ZenithDark/issues/new)
+## Screenshots
+![Dark.png](https://cobre.dev/repo/depictions/com.mac-user669.zenithdark/screenshots/Dark.png)
+
+<!-- ![Light.png](https://cobre.dev/repo/depictions/com.mac-user669.zenithdark/screenshots/Light.png) -->
+
+<!-- ![Prefs.png](https://cobre.dev/repo/depictions/com.mac-user669.zenithdark/screenshots/Prefs.png) -->
+
+##### [View More Screenshots](screenshots/)
+
+## Changelog
+#### 1.7
+iOS 12 compatability.
+
+*Note: The custom Light Color option will not affect anything on iOS 12*
+
+##### [View Previous Versions](changelog/)
 
 ## Source Code
-Here, of course!
+[github.com/CobreDev/ZenithDark](https://github.com/CobreDev/ZenithDark)
