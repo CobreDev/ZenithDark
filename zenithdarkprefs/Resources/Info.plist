@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>ZenithDarkPrefs</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.mac-user669.zenithdarkprefs</string>
+	<string>dev.cobre.zenithdarkprefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -19,6 +19,6 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
-	<string>ZNDarkPrefsRootListController</string>
+	<string>ZDPRootListController</string>
 </dict>
 </plist>

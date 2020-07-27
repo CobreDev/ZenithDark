@@ -1,11 +1,9 @@
-Package: com.mac-user669.zenithdark
-Version: 1.7
-Architecture: iphoneos-arm
-Maintainer: mac-user669 <cooper@cooperhull.com>
-Depends: mobilesubstrate, preferenceloader, com.muirey03.zenith, ws.hbang.common (>= 1.14), com.creaturesurvive.libcscolorpicker
-Section: Tweaks
-Description: Changes Zenith's tab color!
-Author: mac-user669 <cooper@cooperhull.com>
+Package: dev.cobre.zenithdark
 Name: ZenithDark
-Sileodepiction: https://mac-user669.github.io/repo/sileodepictions/ZenithDark.json
-Depiction: https://mac-user669.github.io/repo/depictions/?p=com.mac-user669.zenithdark/
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: cobre
+Author: cobre
+Section: Tweaks

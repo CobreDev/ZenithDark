@@ -1,18 +1,12 @@
-ARCHS = arm64 arm64e
-SDK = iPhoneOS12.2
-FINALPACKAGE = 1
-TARGET = iphone:12.2:12.0
-
-
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = ZenithDarkPrefs
-ZenithDarkPrefs_FILES = ZNDarkPrefsRootListController.m ZNDarkPrefsAboutListController.m
+
+ZenithDarkPrefs_FILES = ZDPRootListController.m
 ZenithDarkPrefs_INSTALL_PATH = /Library/PreferenceBundles
 ZenithDarkPrefs_FRAMEWORKS = UIKit
 ZenithDarkPrefs_PRIVATE_FRAMEWORKS = Preferences
-ZenithDarkPrefs_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
-$(BUNDLE_NAME)_LDFLAGS += -lCSColorPicker
+ZenithDarkPrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 

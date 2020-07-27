@@ -9,13 +9,13 @@
 		<key>cell</key>
 		<string>PSLinkCell</string>
 		<key>detail</key>
-		<string>ZNDarkPrefsRootListController</string>
+		<string>ZDPRootListController</string>
 		<key>icon</key>
-		<string>ZenithDark.png</string>
+		<string>icon.png</string>
 		<key>isController</key>
 		<true/>
 		<key>label</key>
-		<string>ZenithDark</string>
+		<string>ZenithDarkPrefs</string>
 	</dict>
 </dict>
 </plist>
