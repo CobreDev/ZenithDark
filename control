@@ -1,6 +1,6 @@
 Package: dev.cobre.zenithdark
 Name: ZenithDark
-Depends: mobilesubstrate, com.muiry03.zenith, ws.hbang.common (>= 1.15.1)
+Depends: mobilesubstrate, com.muirey03.zenith, ws.hbang.common (>= 1.15.1)
 Conflicts: com.mac-user669.zenithdark
 Provides: com.mac-user669.zenithdark
 Version: 2.0
