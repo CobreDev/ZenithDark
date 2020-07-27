@@ -1,9 +1,11 @@
 Package: dev.cobre.zenithdark
 Name: ZenithDark
-Depends: mobilesubstrate
-Version: 0.0.1
+Depends: mobilesubstrate, com.muiry03.zenith, ws.hbang.common (>= 1.15.1)
+Conflicts: com.mac-user669.zenithdark
+Provides: com.mac-user669.zenithdark
+Version: 2.0
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
-Maintainer: cobre
-Author: cobre
+Maintainer: Cobre <cooper@cooperhull.com>
+Author: Cobre <cooper@cooperhull.com>
 Section: Tweaks

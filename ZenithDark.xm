@@ -13,10 +13,10 @@ Written for Cooper Hull, @mac-user669.
 #define kDarkModeColor [UIColor colorWithWhite:0.0 alpha:0.44]
 #define kLightModeColor [UIColor colorWithWhite:1.0 alpha:0.7]
 
-#define kColor1 [UIColor redColor]
-#define kColor2 [UIColor greenColor] 
-#define kColor3 [UIColor blueColor]  
-#define kColor4 [UIColor cyanColor]  
+#define kColor1 [UIColor redColor] // Testing colors
+#define kColor2 [UIColor greenColor] // Testing colors
+#define kColor3 [UIColor blueColor] // Testing colors
+#define kColor4 [UIColor cyanColor] // Testing colors
 
 
 %group Tweak13
@@ -26,13 +26,13 @@ Written for Cooper Hull, @mac-user669.
 	  %orig(previousTraitCollection);
 	    if (@available(iOS 13, *)) {
 
-	    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-	       [self setBackgroundColor:kColor1];
-	    }
+	    	if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+	    	   [self setBackgroundColor:kColor1];
+	    	}
 
-	    else {
-	     [self setBackgroundColor:kColor2];
-	    }
+	    	else {
+	    	 [self setBackgroundColor:kColor2];
+	    	}
 
 	  }
 	}
@@ -40,15 +40,15 @@ Written for Cooper Hull, @mac-user669.
 	-(void)setBackgroundColor:(UIColor *)backgroundColor {
 	    if (@available(iOS 13, *)) {
 
-	    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-	       %orig(kColor1);
-	    }
+	    	if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+	    	   %orig(kColor1);
+	    	}
+			
+			else {
+	    	%orig(kColor2);
+	    	}
 
-	    else {
-	    %orig(kColor2);
-	    }
-
-	  }
+		}
 	}
 
 %end
@@ -56,7 +56,7 @@ Written for Cooper Hull, @mac-user669.
 
 static BOOL ios13;
 
-%group Tweak12
+%group TwelveDown
 %hook ZNGrabberAccessoryView
 
 	-(void)setBackgroundColor:(UIColor *)backgroundColor {
@@ -71,9 +71,11 @@ static BOOL ios13;
     if (@available(iOS 13, *)) { 
       ios13 = YES; 
       %init(Tweak13);
-    } else {
+    }
+	
+	else {
       ios13 = NO;
-      %init(Tweak12);
+      %init(TwelveDown);
     }
 
 	dlopen ("/Library/MobileSubstrate/DynamicLibraries/Zenith.dylib", RTLD_NOW);   
